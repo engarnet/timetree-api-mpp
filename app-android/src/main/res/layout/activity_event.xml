@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.engarnet.timetree.EventActivity.ViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp"
+        tools:context=".MainActivity">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="イベントタイトル"
+            android:text="@={viewModel.title}"
+            android:textSize="20sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="イベントの説明"
+            android:text="@={viewModel.description}"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="@={viewModel.isKeep}"
+            android:text="Keep" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.isKeep() ? View.GONE : View.VISIBLE}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="開始日時" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/start_date_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:hint="開始日付"
+                        android:text="@{viewModel.startDate}"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/start_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:clickable="true"
+                        android:hint="開始時間"
+                        android:text="@{viewModel.startTime}"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20dp"
+                        android:visibility="@{viewModel.allDay == true ? View.GONE : View.VISIBLE}" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="終了日時" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/end_date_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:hint="終了日付"
+                        android:text="@{viewModel.endDate}"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/end_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:clickable="true"
+                        android:hint="終了時間"
+                        android:text="@{viewModel.endTime}"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20dp"
+                        android:visibility="@{viewModel.allDay == true ? View.GONE : View.VISIBLE}" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="@={viewModel.allDay}"
+                android:text="終日予定" />
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="場所"
+            android:text="@={viewModel.location}" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="URL"
+            android:inputType="textUri"
+            android:text="@={viewModel.url}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/add_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="登録する"
+                android:visibility="@{viewModel.eventId.isEmpty() ? View.VISIBLE : View.GONE}" />
+
+            <Button
+                android:id="@+id/update_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="更新する"
+                android:visibility="@{viewModel.eventId.isEmpty() ? View.GONE: View.VISIBLE}" />
+
+            <Button
+                android:id="@+id/delete_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="削除する"
+                android:visibility="@{viewModel.eventId.isEmpty() ? View.GONE: View.VISIBLE}" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>
