@@ -10,9 +10,6 @@ import com.engarnet.timetree.api.v1.api.calendars.response.CalendarLabelsRespons
 import com.engarnet.timetree.api.v1.api.calendars.response.CalendarMembersResponse
 import com.engarnet.timetree.api.v1.api.calendars.response.CalendarResponse
 import com.engarnet.timetree.api.v1.api.calendars.response.CalendarsResponse
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.serialization.json.Json
 
 open class CalendarApi(private val apiClient: ApiClient) {
@@ -56,31 +53,5 @@ open class CalendarApi(private val apiClient: ApiClient) {
         )
         print("response: $response")
         return Json.parse(CalendarMembersResponse.serializer(), response)
-    }
-}
-
-class DeferredCalendarApi(apiClient: ApiClient) : CalendarApi(apiClient) {
-    fun calendarsDeferred(params: CalendarsParams): Deferred<CalendarsResponse> {
-        return GlobalScope.async {
-            calendars(params)
-        }
-    }
-
-    fun calendarDeferred(params: CalendarParams): Deferred<CalendarResponse> {
-        return GlobalScope.async {
-            calendar(params)
-        }
-    }
-
-    fun calendarLabelsDeferred(params: CalendarLabelsParams): Deferred<CalendarLabelsResponse> {
-        return GlobalScope.async {
-            calendarLabels(params)
-        }
-    }
-
-    fun calendarMembersDeferred(params: CalendarMembersParams): Deferred<CalendarMembersResponse> {
-        return GlobalScope.async {
-            calendarMembers(params)
-        }
     }
 }

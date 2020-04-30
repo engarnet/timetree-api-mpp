@@ -16,7 +16,7 @@ kotlin {
     iOSTarget("ios") {
         binaries {
             framework {
-                baseName = "api-mpp"
+                baseName = "TimeTreeAPICommon"
             }
         }
     }
@@ -28,7 +28,7 @@ kotlin {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.5")
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.20.0")
-        implementation("com.soywiz.korlibs.klock:klock:1.7.3")
+        implementation("com.soywiz.korlibs.klock:klock:1.10.3")
     }
 
     sourceSets["androidMain"].dependencies {
@@ -40,6 +40,12 @@ kotlin {
         implementation("org.jetbrains.kotlin:kotlin-test")
         implementation("org.jetbrains.kotlin:kotlin-test-junit")
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0")
+    }
+
+    sourceSets["iosMain"].dependencies {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.5-native-mt")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:0.20.0")
     }
 }
 

@@ -234,10 +234,6 @@ class TimeTreeClient(
         ).toModel()
     }
 
-    suspend fun updateEvent(params: UpdateEventParams): TEvent = call {
-        eventsApi.updateEvent(params).toModel()
-    }
-
     suspend fun deleteEvent(calendarId: String, eventId: String) = call {
         eventsApi.deleteEvent(
             DeleteEventsParams(

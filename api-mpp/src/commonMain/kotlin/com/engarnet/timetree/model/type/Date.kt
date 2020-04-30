@@ -2,8 +2,12 @@ package com.engarnet.timetree.model.type
 
 import com.soywiz.klock.DateTime
 
-class Date {
+class Date() {
     internal var dateTime = DateTime(0)
+
+    constructor(time: Long) : this() {
+        this.time = time
+    }
 
     var time: Long
         get() = dateTime.unixMillisLong

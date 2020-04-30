@@ -83,8 +83,6 @@ internal fun EventResponse.toModel(): TEvent {
 
 internal fun UpcomingEventsResponse.toModel(): List<TEvent> {
     return data.map { entity ->
-        val a = included
-        val i = entity.relationships.label.data.id
         TEvent(
             id = entity.id,
             isKeep = entity.attributes.category == Category.Keep,

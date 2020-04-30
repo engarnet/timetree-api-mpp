@@ -1,3 +1,5 @@
 include ':app-android'
 include ':api-mpp'
 include ':api-android'
+
+enableFeaturePreview("GRADLE_METADATA")
