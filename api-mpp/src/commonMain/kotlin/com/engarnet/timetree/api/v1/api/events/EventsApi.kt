@@ -5,9 +5,6 @@ import com.engarnet.timetree.api.config.Config
 import com.engarnet.timetree.api.v1.api.events.params.*
 import com.engarnet.timetree.api.v1.api.events.response.EventResponse
 import com.engarnet.timetree.api.v1.api.events.response.UpcomingEventsResponse
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.serialization.json.Json
 
 open class EventsApi(private val apiClient: ApiClient) {
@@ -64,37 +61,5 @@ open class EventsApi(private val apiClient: ApiClient) {
             headers = Config.V1.headers
         )
         print("response: $response")
-    }
-}
-
-class DeferredEventsApi(apiClient: ApiClient) : EventsApi(apiClient) {
-    fun eventsDeferred(params: EventsParams): Deferred<EventResponse> {
-        return GlobalScope.async {
-            events(params)
-        }
-    }
-
-    fun upcomingEventsDeferred(params: UpcomingEventsParams): Deferred<UpcomingEventsResponse> {
-        return GlobalScope.async {
-            upcomingEvents(params)
-        }
-    }
-
-    fun addEventDeferred(params: AddEventsParams): Deferred<EventResponse> {
-        return GlobalScope.async {
-            addEvent(params)
-        }
-    }
-
-    fun updateEventDeferred(params: UpdateEventParams): Deferred<EventResponse> {
-        return GlobalScope.async {
-            updateEvent(params)
-        }
-    }
-
-    fun deleteEventDeferred(params: DeleteEventsParams): Deferred<Unit> {
-        return GlobalScope.async {
-            deleteEvent(params)
-        }
     }
 }
