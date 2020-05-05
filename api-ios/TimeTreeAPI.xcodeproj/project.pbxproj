@@ -27,6 +27,7 @@
 		ACC0B38A245EEB29007685A7 /* TimeTreeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0B389245EEB29007685A7 /* TimeTreeError.swift */; };
 		ACC0B392245F1658007685A7 /* TimeTreeAPICommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC0B390245F1650007685A7 /* TimeTreeAPICommon.framework */; platformFilter = ios; };
 		ACC0B393245F1658007685A7 /* TimeTreeAPICommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ACC0B390245F1650007685A7 /* TimeTreeAPICommon.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ACC0B3AF24604B4B007685A7 /* AuthorizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0B3AE24604B4B007685A7 /* AuthorizeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +67,7 @@
 		ACC0B386245DB54C007685A7 /* TEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEvent.swift; sourceTree = "<group>"; };
 		ACC0B389245EEB29007685A7 /* TimeTreeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTreeError.swift; sourceTree = "<group>"; };
 		ACC0B390245F1650007685A7 /* TimeTreeAPICommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TimeTreeAPICommon.framework; path = "../api-mpp/build/xcode-frameworks/TimeTreeAPICommon.framework"; sourceTree = "<group>"; };
+		ACC0B3AE24604B4B007685A7 /* AuthorizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		ACC0B372245C4F8A007685A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				ACC0B3AD24604B1A007685A7 /* UI */,
 				ACC0B388245EEB1A007685A7 /* Error */,
 				ACC0B37B245DA872007685A7 /* Util */,
 				ACC0B376245D4ABF007685A7 /* Model */,
@@ -178,6 +181,14 @@
 				ACC0B389245EEB29007685A7 /* TimeTreeError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		ACC0B3AD24604B1A007685A7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				ACC0B3AE24604B4B007685A7 /* AuthorizeViewController.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +328,7 @@
 			files = (
 				ACC0B383245DABE9007685A7 /* TCalendar.swift in Sources */,
 				ACC0B374245C4F98007685A7 /* TimeTreeClient.swift in Sources */,
+				ACC0B3AF24604B4B007685A7 /* AuthorizeViewController.swift in Sources */,
 				ACC0B381245DAA73007685A7 /* TActivity.swift in Sources */,
 				ACC0B37D245DA87C007685A7 /* UIColor.swift in Sources */,
 				ACC0B37F245DA920007685A7 /* TAccessToken.swift in Sources */,

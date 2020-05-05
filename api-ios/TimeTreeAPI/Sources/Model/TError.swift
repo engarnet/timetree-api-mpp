@@ -24,7 +24,7 @@ extension ErrorEntity {
         return TError(
             responseCode: responseCode,
             type: self.type,
-            status: self.status as! Int,
+            status: self.status as? Int,
             title: self.title,
             errors: self.errors,
             error: self.error,
