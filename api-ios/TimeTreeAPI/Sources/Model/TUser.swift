@@ -10,6 +10,18 @@ import Foundation
 import TimeTreeAPICommon
 
 public struct TUser {
+    public init(
+        id: String,
+        name: String,
+        description: String,
+        imageUrl: URL?
+    ) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.imageUrl = imageUrl
+    }
+
     public let id: String
     public let name: String
     public let description: String

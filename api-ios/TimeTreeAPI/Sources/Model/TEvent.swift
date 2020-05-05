@@ -10,6 +10,45 @@ import UIKit
 import TimeTreeAPICommon
 
 public struct TEvent{
+    public init(
+        id: String,
+        isKeep: Bool,
+        title: String,
+        allDay: Bool,
+        startAt: Foundation.Date,
+        startTimezone: TimeZone,
+        endAt: Foundation.Date,
+        endTimezone: TimeZone,
+        recurrence: [String]?,
+        recurringUuid: String?,
+        description: String?,
+        location: String?,
+        url: URL?,
+        creator: TUser,
+        label: TLabel,
+        attendees: [TUser],
+        createdAt: Foundation.Date,
+        updatedAt: Foundation.Date
+    ) {
+        self.id = id
+        self.isKeep = isKeep
+        self.title = title
+        self.allDay = allDay
+        self.startAt = startAt
+        self.startTimezone = startTimezone
+        self.endAt = endAt
+        self.endTimezone = endTimezone
+        self.recurrence = recurrence
+        self.recurringUuid = recurringUuid
+        self.description = description
+        self.location = location
+        self.url = url
+        self.creator = creator
+        self.label = label
+        self.attendees = attendees
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
     public let id: String
     public let isKeep: Bool
     public let title: String
