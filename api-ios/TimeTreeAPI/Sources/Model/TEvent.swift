@@ -77,9 +77,9 @@ extension EventResponse {
             isKeep: entity.attributes.category == Category.keep,
             title: entity.attributes.title,
             allDay: entity.attributes.allDay,
-            startAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.startAt.time)),
+            startAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.startAt.time / 1000)),
             startTimezone: TimeZone(identifier: entity.attributes.startTimezone)!,
-            endAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.endAt.time)),
+            endAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.endAt.time / 1000)),
             endTimezone: TimeZone(identifier: entity.attributes.endTimezone)!,
             recurrence: entity.attributes.recurrence?.map{_ in ""},
             recurringUuid: entity.attributes.recurringUuid,
@@ -118,8 +118,8 @@ extension EventResponse {
                     )
                     } ?? TUser(id: attendeesId, name: "workaround name", description: "", imageUrl: nil) // TODO: includedにmembersが返って来ない場合の回避策
             },
-            createdAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.createdAt.time)),
-            updatedAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.updatedAt.time))
+            createdAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.createdAt.time / 1000)),
+            updatedAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.updatedAt.time / 1000))
         )
     }
 }
@@ -132,9 +132,9 @@ extension UpcomingEventsResponse {
                 isKeep: entity.attributes.category == Category.keep,
                 title: entity.attributes.title,
                 allDay: entity.attributes.allDay,
-                startAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.startAt.time)),
+                startAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.startAt.time / 1000)),
                 startTimezone: TimeZone(identifier: entity.attributes.startTimezone)!,
-                endAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.endAt.time)),
+                endAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.endAt.time / 1000)),
                 endTimezone: TimeZone(identifier: entity.attributes.endTimezone)!,
                 recurrence: entity.attributes.recurrence?.map{_ in ""},
                 recurringUuid: entity.attributes.recurringUuid,
@@ -173,8 +173,8 @@ extension UpcomingEventsResponse {
                         )
                         } ?? TUser(id: attendeesId, name: "workaround name", description: "", imageUrl: nil) // TODO: includedにmembersが返って来ない場合の回避策
                 },
-                createdAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.createdAt.time)),
-                updatedAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.updatedAt.time))
+                createdAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.createdAt.time / 1000)),
+                updatedAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.updatedAt.time / 1000))
             )
         }
     }
