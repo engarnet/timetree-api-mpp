@@ -131,4 +131,19 @@ internal class Delegate(
             completableDeferred.complete(Response(response, json))
         }
     }
+
+    override fun URLSession(
+        session: NSURLSession,
+        dataTask: NSURLSessionDataTask,
+        didReceiveResponse: NSURLResponse,
+        completionHandler: (NSURLSessionResponseDisposition) -> Unit
+    ) {
+        val response = dataTask.response as NSHTTPURLResponse
+        if (response.statusCode.toInt() == 204) {
+            // HTTP 204 No-Content
+            val response = dataTask.response as NSHTTPURLResponse
+            completableDeferred.complete(Response(response, ""))
+        }
+        completionHandler(NSURLSessionResponseAllow)
+    }
 }
