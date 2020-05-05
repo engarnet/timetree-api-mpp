@@ -9,7 +9,29 @@
 import UIKit
 import TimeTreeAPICommon
 
-public struct TCalendar{
+public class TCalendar{
+    public init(
+        id: String,
+        name: String,
+        description: String,
+        color: UIColor,
+        order: Int,
+        imageUrl: URL?,
+        createdAt: Foundation.Date,
+        labels: [TLabel],
+        members: [TUser]
+    ) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.color = color
+        self.order = order
+        self.imageUrl = imageUrl
+        self.createdAt = createdAt
+        self.labels = labels
+        self.members = members
+    }
+
     public let id: String
     public let name: String
     public let description: String

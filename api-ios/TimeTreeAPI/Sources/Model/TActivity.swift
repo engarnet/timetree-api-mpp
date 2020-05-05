@@ -9,7 +9,19 @@
 import Foundation
 import TimeTreeAPICommon
 
-public struct TActivity {
+public class TActivity {
+    public init(
+        id: String,
+        content: String,
+        updatedAt: Foundation.Date,
+        createdAt: Foundation.Date
+    ) {
+        self.id = id
+        self.content = content
+        self.updatedAt = updatedAt
+        self.createdAt = createdAt
+    }
+
     public let id: String
     public let content: String
     public let updatedAt: Foundation.Date

@@ -10,6 +10,45 @@ import UIKit
 import TimeTreeAPICommon
 
 public struct TEvent{
+    public init(
+        id: String,
+        isKeep: Bool,
+        title: String,
+        allDay: Bool,
+        startAt: Foundation.Date,
+        startTimezone: TimeZone,
+        endAt: Foundation.Date,
+        endTimezone: TimeZone,
+        recurrence: [String]?,
+        recurringUuid: String?,
+        description: String?,
+        location: String?,
+        url: URL?,
+        creator: TUser,
+        label: TLabel,
+        attendees: [TUser],
+        createdAt: Foundation.Date,
+        updatedAt: Foundation.Date
+    ) {
+        self.id = id
+        self.isKeep = isKeep
+        self.title = title
+        self.allDay = allDay
+        self.startAt = startAt
+        self.startTimezone = startTimezone
+        self.endAt = endAt
+        self.endTimezone = endTimezone
+        self.recurrence = recurrence
+        self.recurringUuid = recurringUuid
+        self.description = description
+        self.location = location
+        self.url = url
+        self.creator = creator
+        self.label = label
+        self.attendees = attendees
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
     public let id: String
     public let isKeep: Bool
     public let title: String
@@ -38,9 +77,9 @@ extension EventResponse {
             isKeep: entity.attributes.category == Category.keep,
             title: entity.attributes.title,
             allDay: entity.attributes.allDay,
-            startAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.startAt.time)),
+            startAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.startAt.time / 1000)),
             startTimezone: TimeZone(identifier: entity.attributes.startTimezone)!,
-            endAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.endAt.time)),
+            endAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.endAt.time / 1000)),
             endTimezone: TimeZone(identifier: entity.attributes.endTimezone)!,
             recurrence: entity.attributes.recurrence?.map{_ in ""},
             recurringUuid: entity.attributes.recurringUuid,
@@ -79,8 +118,8 @@ extension EventResponse {
                     )
                     } ?? TUser(id: attendeesId, name: "workaround name", description: "", imageUrl: nil) // TODO: includedにmembersが返って来ない場合の回避策
             },
-            createdAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.createdAt.time)),
-            updatedAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.updatedAt.time))
+            createdAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.createdAt.time / 1000)),
+            updatedAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.updatedAt.time / 1000))
         )
     }
 }
@@ -93,9 +132,9 @@ extension UpcomingEventsResponse {
                 isKeep: entity.attributes.category == Category.keep,
                 title: entity.attributes.title,
                 allDay: entity.attributes.allDay,
-                startAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.startAt.time)),
+                startAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.startAt.time / 1000)),
                 startTimezone: TimeZone(identifier: entity.attributes.startTimezone)!,
-                endAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.endAt.time)),
+                endAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.endAt.time / 1000)),
                 endTimezone: TimeZone(identifier: entity.attributes.endTimezone)!,
                 recurrence: entity.attributes.recurrence?.map{_ in ""},
                 recurringUuid: entity.attributes.recurringUuid,
@@ -134,8 +173,8 @@ extension UpcomingEventsResponse {
                         )
                         } ?? TUser(id: attendeesId, name: "workaround name", description: "", imageUrl: nil) // TODO: includedにmembersが返って来ない場合の回避策
                 },
-                createdAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.createdAt.time)),
-                updatedAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.updatedAt.time))
+                createdAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.createdAt.time / 1000)),
+                updatedAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.updatedAt.time / 1000))
             )
         }
     }

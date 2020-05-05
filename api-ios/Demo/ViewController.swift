@@ -71,4 +71,33 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let vc = AuthorizeViewController()
+        vc.delegate = self
+        vc.params = AuthorizeParams(
+            clientId: "qkEtBbKozZFwOUdl3SMcq2A2RbNwgFZTIvgf0UJ648U",
+            clientSecret: "iFYXwc0Zew0yJPQ6oHUDnqR6hOBousbITfLXRoCo1Gc",
+            redirectUrl: "https://sites.google.com/engar-net.com/timetreetest",
+            state: UUID().uuidString,
+            codeVerifier: UUID().uuidString
+        )
+        self.present(vc, animated: true, completion: nil)
+    }
+}
+
+extension ViewController: AuthorizeViewControllerDelegate {
+    func authorizeCompleted(accessToken: TAccessToken) {
+        print("token=", accessToken.accessToken)
+        let client = TimeTreeClient(accessToken: accessToken.accessToken)
+        client.user { result in
+            switch result {
+            case .success(let user):
+                print(user.name)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
