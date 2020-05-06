@@ -1,4 +1,4 @@
-package com.engarnet.timetree.util
+package com.engarnet.timetree.common
 
 import com.engarnet.timetree.TimeTreeClient
 

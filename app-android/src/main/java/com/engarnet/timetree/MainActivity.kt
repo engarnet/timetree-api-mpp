@@ -5,12 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.engarnet.timetree.calendar.CalendarListActivity
+import com.engarnet.timetree.common.Container
 import com.engarnet.timetree.databinding.ActivityMainBinding
 import com.engarnet.timetree.ui.AuthorizeActivity
 import com.engarnet.timetree.ui.AuthorizeParams
-import com.engarnet.timetree.util.Container
-import com.engarnet.timetree.view.CalendarRecyclerViewAdapter
-import kotlinx.coroutines.runBlocking
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,26 +25,20 @@ class MainActivity : AppCompatActivity() {
         val isEmpty: Boolean get() = (clientId.isEmpty() || clientSecret.isEmpty() || redirectUrl.isEmpty())
     }
 
-    // TODO: OAuthアプリケーションの情報を設定
+    // TODO: oAuth app settings
+    // https://timetreeapp.com/oauth/applications
     private val setting = OAuthSetting(
         clientId = "",
         clientSecret = "",
         redirectUrl = ""
     )
 
-    // TODO: パーソナルアクセストークンを設定
+    // TODO: personal access token setting
+    // https://timetreeapp.com/personal_access_tokens
     private val personalAccessToken = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.adapter = CalendarRecyclerViewAdapter("カレンダー一覧", listOf()) { position ->
-            startActivity(
-                CalendarActivity.createIntent(
-                    this,
-                    binding.adapter!!.items[position]
-                )
-            )
-        }
         binding.loginButton.setOnClickListener {
             handleLoginButtonClicked()
         }
@@ -76,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             val accessToken = data?.extras?.getString(AuthorizeActivity.KEY_ACCESS_TOKEN) ?: return
             Container.timeTreeClient = TimeTreeClient(accessToken = accessToken)
 
-            loadCalendars()
+            moveCalendarList()
         }
     }
 
@@ -85,19 +78,12 @@ class MainActivity : AppCompatActivity() {
         if (personalAccessToken.isEmpty()) return
         Container.timeTreeClient = TimeTreeClient(accessToken = personalAccessToken)
 
-        loadCalendars()
+        moveCalendarList()
     }
 
-    private fun loadCalendars() {
-        runBlocking {
-            runCatching {
-                Container.timeTreeClient.calendars()
-            }.onSuccess { calendars ->
-                binding.adapter!!.items = calendars
-                binding.adapter!!.notifyDataSetChanged()
-            }.onFailure {
-                print(it)
-            }
+    private fun moveCalendarList() {
+        CalendarListActivity.createIntent(this).let {
+            startActivity(it)
         }
     }
 }
