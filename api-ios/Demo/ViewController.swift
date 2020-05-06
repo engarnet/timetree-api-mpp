@@ -11,8 +11,24 @@ import TimeTreeAPI
 
 class ViewController: UIViewController {
 
+    // MARK: app settings
+    // https://timetreeapp.com/oauth/applications
+    private let authorizeParams = AuthorizeParams(
+        clientId: "qkEtBbKozZFwOUdl3SMcq2A2RbNwgFZTIvgf0UJ648U",
+        clientSecret: "iFYXwc0Zew0yJPQ6oHUDnqR6hOBousbITfLXRoCo1Gc",
+        redirectUrl: "https://sites.google.com/engar-net.com/timetreetest",
+        state: UUID().uuidString,
+        codeVerifier: UUID().uuidString
+    )
+    
+    // MARK: personal access token
+    // https://timetreeapp.com/personal_access_tokens
+    private let personalAccessToken = "56ujaioSCrJrId831Kf7YmiGCxEsilRhiVEI78sxg-ha5epN"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.title = "TimeTreeAPIDemo"
         // Do any additional setup after loading the view.
 
         let client = TimeTreeClient(accessToken: "")
@@ -72,32 +88,29 @@ class ViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    @IBAction func onSignInTapped(_ sender: Any) {
         let vc = AuthorizeViewController()
         vc.delegate = self
-        vc.params = AuthorizeParams(
-            clientId: "qkEtBbKozZFwOUdl3SMcq2A2RbNwgFZTIvgf0UJ648U",
-            clientSecret: "iFYXwc0Zew0yJPQ6oHUDnqR6hOBousbITfLXRoCo1Gc",
-            redirectUrl: "https://sites.google.com/engar-net.com/timetreetest",
-            state: UUID().uuidString,
-            codeVerifier: UUID().uuidString
-        )
+        vc.params = authorizeParams
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func onPersonalAccessTokenTapped(_ sender: Any) {
+        Container.timeTreeClient = TimeTreeClient(accessToken: self.personalAccessToken)
+        moveNext()
+    }
+
+    private func moveNext() {
+        let vc = CalendarListViewController.instance
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension ViewController: AuthorizeViewControllerDelegate {
     func authorizeCompleted(accessToken: TAccessToken) {
-        print("token=", accessToken.accessToken)
-        let client = TimeTreeClient(accessToken: accessToken.accessToken)
-        client.user { result in
-            switch result {
-            case .success(let user):
-                print(user.name)
-            case .failure(let error):
-                print(error)
-            }
+        DispatchQueue.main.async {
+            Container.timeTreeClient = TimeTreeClient(accessToken: accessToken.accessToken)
+            self.moveNext()
         }
     }
 }

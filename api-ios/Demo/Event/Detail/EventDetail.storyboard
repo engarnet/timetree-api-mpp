@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aWi-p4-5Wy">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Event Detail View Controller-->
+        <scene sceneID="w8f-oV-0sL">
+            <objects>
+                <viewController id="aWi-p4-5Wy" customClass="EventDetailViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g3o-Yl-Vbb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="J53-8j-Aec">
+                                <rect key="frame" x="8" y="52" width="398" height="414.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDA-IN-wUQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="70"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="KRh-yn-xSV">
+                                                <rect key="frame" x="34" y="0.0" width="330.5" height="70"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HV7-v0-3wt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="99.5" height="70"/>
+                                                        <string key="text">XXXX/XX/XX
+XX:XX</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3My-mb-ZXx">
+                                                        <rect key="frame" x="150.5" y="0.0" width="29.5" height="70"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                                        <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOj-eZ-ZH8">
+                                                        <rect key="frame" x="231" y="0.0" width="99.5" height="70"/>
+                                                        <string key="text">XXXX/XX/XX
+XX:XX</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="9ng-ut-M2T"/>
+                                            <constraint firstItem="KRh-yn-xSV" firstAttribute="centerX" secondItem="oDA-IN-wUQ" secondAttribute="centerX" id="bkE-Jv-pk7"/>
+                                            <constraint firstAttribute="bottom" secondItem="KRh-yn-xSV" secondAttribute="bottom" id="gzf-UU-Y5X"/>
+                                            <constraint firstItem="KRh-yn-xSV" firstAttribute="top" secondItem="oDA-IN-wUQ" secondAttribute="top" id="pKF-qa-csi"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot2-ch-jb8">
+                                        <rect key="frame" x="0.0" y="78" width="398" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHy-qr-wTx">
+                                        <rect key="frame" x="0.0" y="106.5" width="398" height="150"/>
+                                        <subviews>
+                                            <wkWebView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHI-kO-XQ3">
+                                                <rect key="frame" x="0.0" y="-0.5" width="398" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <wkWebViewConfiguration key="configuration">
+                                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                    <wkPreferences key="preferences"/>
+                                                </wkWebViewConfiguration>
+                                            </wkWebView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="rKC-Jc-Qro"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LKz-rV-ioD">
+                                        <rect key="frame" x="0.0" y="264.5" width="398" height="150"/>
+                                        <subviews>
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BzU-Mz-aWm">
+                                                <rect key="frame" x="0.0" y="-0.5" width="398" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </mapView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="jrb-Cn-Lj7"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="J53-8j-Aec" firstAttribute="leading" secondItem="H9O-N3-tyz" secondAttribute="leading" constant="8" id="qiI-03-oMb"/>
+                            <constraint firstItem="H9O-N3-tyz" firstAttribute="trailing" secondItem="J53-8j-Aec" secondAttribute="trailing" constant="8" id="r9f-sz-6Cf"/>
+                            <constraint firstItem="J53-8j-Aec" firstAttribute="top" secondItem="H9O-N3-tyz" secondAttribute="top" constant="8" id="sIr-dj-RS9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="H9O-N3-tyz"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="Ot2-ch-jb8" id="0c1-hs-oXf"/>
+                        <outlet property="endTimeLabel" destination="HOj-eZ-ZH8" id="B4e-ja-UFC"/>
+                        <outlet property="mapView" destination="BzU-Mz-aWm" id="Bjs-wC-elQ"/>
+                        <outlet property="startTimeLabel" destination="HV7-v0-3wt" id="PV2-nG-cBb"/>
+                        <outlet property="webView" destination="JHI-kO-XQ3" id="sR6-Cz-Ehx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eE-v8-C0w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="75"/>
+        </scene>
+    </scenes>
+</document>
