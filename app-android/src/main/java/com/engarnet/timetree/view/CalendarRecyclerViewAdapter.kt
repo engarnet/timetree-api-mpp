@@ -1,6 +1,5 @@
 package com.engarnet.timetree.view
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,8 +47,8 @@ class CalendarRecyclerViewAdapter(
             onItemClicked: OnCalendarItemClicked
         ): ViewHolder {
             return when (this) {
-                Header -> ViewHolder.Header(parent.context)
-                Content -> ViewHolder.Content(parent.context, onItemClicked)
+                Header -> ViewHolder.Header(parent)
+                Content -> ViewHolder.Content(parent, onItemClicked)
             }
         }
 
@@ -63,9 +62,9 @@ class CalendarRecyclerViewAdapter(
 
     sealed class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         class Header(
-            context: Context,
+            parent: ViewGroup,
             private var binding: RecyclerviewHeaderBinding = RecyclerviewHeaderBinding.inflate(
-                LayoutInflater.from(context)
+                LayoutInflater.from(parent.context), parent, false
             )
         ) : ViewHolder(binding.root) {
             fun bind(title: String) {
@@ -74,10 +73,10 @@ class CalendarRecyclerViewAdapter(
         }
 
         class Content(
-            context: Context,
+            parent: ViewGroup,
             onItemClicked: OnCalendarItemClicked,
             private var binding: RecyclerviewCalendarContentBinding = RecyclerviewCalendarContentBinding.inflate(
-                LayoutInflater.from(context)
+                LayoutInflater.from(parent.context), parent, false
             )
         ) : ViewHolder(binding.root) {
             init {

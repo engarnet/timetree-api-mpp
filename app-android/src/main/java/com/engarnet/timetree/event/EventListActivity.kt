@@ -1,4 +1,4 @@
-package com.engarnet.timetree
+package com.engarnet.timetree.event
 
 import android.content.Context
 import android.content.Intent
@@ -7,16 +7,20 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.engarnet.timetree.databinding.ActivityCalendarBinding
+import com.engarnet.timetree.R
+import com.engarnet.timetree.common.Container
+import com.engarnet.timetree.databinding.ActivityEventListBinding
 import com.engarnet.timetree.model.TCalendar
-import com.engarnet.timetree.util.Container
 import com.engarnet.timetree.view.EventRecyclerViewAdapter
 import kotlinx.coroutines.runBlocking
 import java.util.*
 
-class CalendarActivity : AppCompatActivity() {
+class EventListActivity : AppCompatActivity() {
     private val binding by lazy {
-        DataBindingUtil.setContentView<ActivityCalendarBinding>(this, R.layout.activity_calendar)
+        DataBindingUtil.setContentView<ActivityEventListBinding>(
+            this,
+            R.layout.activity_event_list
+        )
     }
 
     private val calendarId by lazy {
@@ -27,12 +31,12 @@ class CalendarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.adapter = EventRecyclerViewAdapter("イベント一覧", listOf()) { position ->
+        binding.adapter = EventRecyclerViewAdapter("Upcoming Event List", listOf()) { position ->
             startActivity(
-                EventActivity.createIntentWithEvent(
+                EventDetailActivity.createIntent(
                     context = this,
-                    calendar = binding.calendar!!,
-                    event = binding.adapter!!.items[position]
+                    calendarId = binding.calendar!!.id,
+                    eventId = binding.adapter!!.items[position].id
                 )
             )
         }
@@ -46,7 +50,7 @@ class CalendarActivity : AppCompatActivity() {
                     calendarId = calendarId
                 )
             }.onSuccess {
-                this@CalendarActivity.title = it.name
+                this@EventListActivity.title = it.name
                 binding.calendar = it
             }.onFailure {
                 print(it)
@@ -67,7 +71,7 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_event, menu)
+        menuInflater.inflate(R.menu.menu_event_list, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -75,9 +79,9 @@ class CalendarActivity : AppCompatActivity() {
         return when (item!!.itemId) {
             R.id.menu_add -> {
                 startActivity(
-                    EventActivity.createIntent(
+                    EventEditActivity.createIntent(
                         context = this,
-                        calendar = binding.calendar!!
+                        calendarId = calendarId
                     )
                 )
                 true
@@ -89,7 +93,7 @@ class CalendarActivity : AppCompatActivity() {
     companion object {
         private const val KEY_CALENDAR_ID = "key_calendar_id"
         fun createIntent(context: Context, calendar: TCalendar): Intent {
-            return Intent(context, CalendarActivity::class.java).apply {
+            return Intent(context, EventListActivity::class.java).apply {
                 putExtra(KEY_CALENDAR_ID, calendar.id)
             }
         }

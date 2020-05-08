@@ -6,8 +6,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="viewModel"
-            type="com.engarnet.timetree.EventActivity.ViewModel" />
+            name="bindingModel"
+            type="com.engarnet.timetree.event.EventEditActivity.BindingModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,28 +21,34 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="イベントタイトル"
-            android:text="@={viewModel.title}"
+            android:hint="Title"
+            android:text="@={bindingModel.title}"
             android:textSize="20sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="イベントの説明"
-            android:text="@={viewModel.description}"
+            android:hint="Description"
+            android:text="@={bindingModel.description}"
             android:textSize="20sp" />
 
         <CheckBox
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="@={viewModel.isKeep}"
+            android:checked="@={bindingModel.isKeep}"
             android:text="Keep" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="@={bindingModel.allDay}"
+            android:text="AllDay" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="@{viewModel.isKeep() ? View.GONE : View.VISIBLE}">
+            android:visibility="@{bindingModel.isKeep() ? View.GONE : View.VISIBLE}">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,7 +58,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="開始日時" />
+                    android:text="StartTime" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -64,8 +70,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true"
-                        android:hint="開始日付"
-                        android:text="@{viewModel.startDate}"
+                        android:hint="Date"
+                        android:text="@{bindingModel.startDate}"
                         android:textColor="@color/colorAccent"
                         android:textSize="20dp" />
 
@@ -75,11 +81,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:clickable="true"
-                        android:hint="開始時間"
-                        android:text="@{viewModel.startTime}"
+                        android:hint="Time"
+                        android:text="@{bindingModel.startTime}"
                         android:textColor="@color/colorAccent"
                         android:textSize="20dp"
-                        android:visibility="@{viewModel.allDay == true ? View.GONE : View.VISIBLE}" />
+                        android:visibility="@{bindingModel.allDay == true ? View.GONE : View.VISIBLE}" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -91,7 +97,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="終了日時" />
+                    android:text="EndTime" />
 
 
                 <LinearLayout
@@ -104,8 +110,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true"
-                        android:hint="終了日付"
-                        android:text="@{viewModel.endDate}"
+                        android:hint="Date"
+                        android:text="@{bindingModel.endDate}"
                         android:textColor="@color/colorAccent"
                         android:textSize="20dp" />
 
@@ -115,33 +121,27 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:clickable="true"
-                        android:hint="終了時間"
-                        android:text="@{viewModel.endTime}"
+                        android:hint="Time"
+                        android:text="@{bindingModel.endTime}"
                         android:textColor="@color/colorAccent"
                         android:textSize="20dp"
-                        android:visibility="@{viewModel.allDay == true ? View.GONE : View.VISIBLE}" />
+                        android:visibility="@{bindingModel.allDay == true ? View.GONE : View.VISIBLE}" />
                 </LinearLayout>
             </LinearLayout>
-
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="@={viewModel.allDay}"
-                android:text="終日予定" />
         </LinearLayout>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="場所"
-            android:text="@={viewModel.location}" />
+            android:hint="Location"
+            android:text="@={bindingModel.location}" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="URL"
             android:inputType="textUri"
-            android:text="@={viewModel.url}" />
+            android:text="@={bindingModel.url}" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,28 +149,11 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/add_button"
+                android:id="@+id/save_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="登録する"
-                android:visibility="@{viewModel.eventId.isEmpty() ? View.VISIBLE : View.GONE}" />
-
-            <Button
-                android:id="@+id/update_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="更新する"
-                android:visibility="@{viewModel.eventId.isEmpty() ? View.GONE: View.VISIBLE}" />
-
-            <Button
-                android:id="@+id/delete_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="削除する"
-                android:visibility="@{viewModel.eventId.isEmpty() ? View.GONE: View.VISIBLE}" />
+                android:text="Save" />
         </LinearLayout>
     </LinearLayout>
 </layout>
