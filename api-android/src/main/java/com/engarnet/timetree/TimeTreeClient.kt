@@ -243,7 +243,7 @@ class TimeTreeClient(
         )
     }
 
-    suspend fun addComment(calendarId: String, eventId: String, comment: String): TActivity = call {
+    suspend fun addComment(calendarId: String, eventId: String, comment: String): TComment = call {
         activitiesApi.addActivity(
             AddActivityParams(
                 calendarId = calendarId,
