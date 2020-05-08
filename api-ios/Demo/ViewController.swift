@@ -11,19 +11,19 @@ import TimeTreeAPI
 
 class ViewController: UIViewController {
 
-    // MARK: app settings
+    // MARK: oAuth app settings
     // https://timetreeapp.com/oauth/applications
     private let authorizeParams = AuthorizeParams(
-        clientId: "qkEtBbKozZFwOUdl3SMcq2A2RbNwgFZTIvgf0UJ648U",
-        clientSecret: "iFYXwc0Zew0yJPQ6oHUDnqR6hOBousbITfLXRoCo1Gc",
-        redirectUrl: "https://sites.google.com/engar-net.com/timetreetest",
+        clientId: "",
+        clientSecret: "",
+        redirectUrl: "",
         state: UUID().uuidString,
         codeVerifier: UUID().uuidString
     )
     
-    // MARK: personal access token
+    // MARK: personal access token setting
     // https://timetreeapp.com/personal_access_tokens
-    private let personalAccessToken = "56ujaioSCrJrId831Kf7YmiGCxEsilRhiVEI78sxg-ha5epN"
+    private let personalAccessToken = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
