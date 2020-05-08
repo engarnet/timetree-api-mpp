@@ -1,5 +1,5 @@
 //
-//  TActivity.swift
+//  TComment.swift
 //  TimeTreeAPI
 //
 //  Created by EngarNet on 2020/05/02.
@@ -9,7 +9,7 @@
 import Foundation
 import TimeTreeAPICommon
 
-public class TActivity {
+public class TComment {
     public init(
         id: String,
         content: String,
@@ -29,8 +29,8 @@ public class TActivity {
 }
 
 extension ActivityResponse {
-    func toModel() -> TActivity {
-        return TActivity(
+    func toModel() -> TComment {
+        return TComment(
             id: self.data.id,
             content: self.data.attributes.content,
             updatedAt: Foundation.Date(timeIntervalSince1970: TimeInterval(self.data.attributes.updatedAt.time)),
