@@ -30,7 +30,7 @@
 		ACC0B37A245DA760007685A7 /* TLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0B379245DA760007685A7 /* TLabel.swift */; };
 		ACC0B37D245DA87C007685A7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0B37C245DA87C007685A7 /* UIColor.swift */; };
 		ACC0B37F245DA920007685A7 /* TAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0B37E245DA920007685A7 /* TAccessToken.swift */; };
-		ACC0B381245DAA73007685A7 /* TActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0B380245DAA73007685A7 /* TActivity.swift */; };
+		ACC0B381245DAA73007685A7 /* TComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0B380245DAA73007685A7 /* TComment.swift */; };
 		ACC0B383245DABE9007685A7 /* TCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0B382245DABE9007685A7 /* TCalendar.swift */; };
 		ACC0B385245DB2C2007685A7 /* TError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0B384245DB2C2007685A7 /* TError.swift */; };
 		ACC0B387245DB54C007685A7 /* TEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0B386245DB54C007685A7 /* TEvent.swift */; };
@@ -81,7 +81,7 @@
 		ACC0B379245DA760007685A7 /* TLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLabel.swift; sourceTree = "<group>"; };
 		ACC0B37C245DA87C007685A7 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		ACC0B37E245DA920007685A7 /* TAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAccessToken.swift; sourceTree = "<group>"; };
-		ACC0B380245DAA73007685A7 /* TActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TActivity.swift; sourceTree = "<group>"; };
+		ACC0B380245DAA73007685A7 /* TComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TComment.swift; sourceTree = "<group>"; };
 		ACC0B382245DABE9007685A7 /* TCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCalendar.swift; sourceTree = "<group>"; };
 		ACC0B384245DB2C2007685A7 /* TError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TError.swift; sourceTree = "<group>"; };
 		ACC0B386245DB54C007685A7 /* TEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEvent.swift; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 				ACC0B377245D4AE0007685A7 /* TUser.swift */,
 				ACC0B379245DA760007685A7 /* TLabel.swift */,
 				ACC0B37E245DA920007685A7 /* TAccessToken.swift */,
-				ACC0B380245DAA73007685A7 /* TActivity.swift */,
+				ACC0B380245DAA73007685A7 /* TComment.swift */,
 				ACC0B382245DABE9007685A7 /* TCalendar.swift */,
 				ACC0B384245DB2C2007685A7 /* TError.swift */,
 				ACC0B386245DB54C007685A7 /* TEvent.swift */,
@@ -391,7 +391,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\ncd \"$SRCROOT/../api-mpp/build/xcode-frameworks\"\n./gradlew :api-mpp:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\ncd \"$SRCROOT/../\"\n./gradlew :api-mpp:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -403,7 +403,7 @@
 				ACC0B383245DABE9007685A7 /* TCalendar.swift in Sources */,
 				ACC0B374245C4F98007685A7 /* TimeTreeClient.swift in Sources */,
 				ACC0B3AF24604B4B007685A7 /* AuthorizeViewController.swift in Sources */,
-				ACC0B381245DAA73007685A7 /* TActivity.swift in Sources */,
+				ACC0B381245DAA73007685A7 /* TComment.swift in Sources */,
 				ACC0B37D245DA87C007685A7 /* UIColor.swift in Sources */,
 				ACC0B37F245DA920007685A7 /* TAccessToken.swift in Sources */,
 				ACC0B385245DB2C2007685A7 /* TError.swift in Sources */,

@@ -3,16 +3,16 @@ package com.engarnet.timetree.model
 import com.engarnet.timetree.api.v1.api.activities.response.ActivityResponse
 import java.util.*
 
-data class TActivity(
+data class TComment(
     val id: String,
     val content: String,
     val updatedAt: Date,
     val createdAt: Date
 )
 
-internal fun ActivityResponse.toModel(): TActivity {
+internal fun ActivityResponse.toModel(): TComment {
     return data.let {
-        TActivity(
+        TComment(
             id = it.id,
             content = it.attributes.content,
             updatedAt = Date().apply { time = it.attributes.updatedAt.time },
