@@ -94,7 +94,7 @@ class TimeTreeClient(
             EventParams(
                 calendarId = calendarId,
                 eventId = eventId,
-                include = Include.Events(labels = true, creator = true, attendees = true)
+                include = Include.Events(label = true, creator = true, attendees = true)
             )
         ).toModel()
     }
@@ -104,7 +104,7 @@ class TimeTreeClient(
             UpcomingEventsParams(
                 calendarId = calendarId,
                 days = 7,
-                include = Include.Events(labels = true, creator = true, attendees = true),
+                include = Include.Events(label = true, creator = true, attendees = true),
                 timeZone = timezone.id
             )
         ).toModel()

@@ -11,7 +11,7 @@ fun Include.Calendars.toParam(): String {
 
 fun Include.Events.toParam(): String {
     return listOf(
-        if (labels) "labels" else "",
+        if (label) "label" else "",
         if (creator) "creator" else "",
         if (attendees) "attendees" else ""
     ).filter { it != "" }.joinToString(",")

@@ -137,7 +137,7 @@ extension TimeTreeClient {
                 params: EventParams(
                     calendarId: calendarId,
                     eventId: eventId,
-                    include: Include.Events(labels: true, creator: true, attendees: true)
+                    include: Include.Events(label: true, creator: true, attendees: true)
                 )
             )
         deferred.invokeOnCompletion { error in
@@ -157,7 +157,7 @@ extension TimeTreeClient {
                     calendarId: calendarId,
                     timeZone: timeZone.identifier,
                     days: 7,
-                    include: Include.Events(labels: true, creator: true, attendees: true)
+                    include: Include.Events(label: true, creator: true, attendees: true)
                 )
             )
         deferred.invokeOnCompletion { error in

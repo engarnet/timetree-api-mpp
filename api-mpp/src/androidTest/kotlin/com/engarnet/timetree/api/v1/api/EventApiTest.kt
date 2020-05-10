@@ -32,7 +32,7 @@ class EventApiTest {
                 calendarId = calendarId,
                 eventId = eventId,
                 include = Include.Events(
-                    labels = true,
+                    label = true,
                     creator = true,
                     attendees = true
                 )
@@ -57,7 +57,7 @@ class EventApiTest {
                 timeZone = TimeZone.getDefault().id,
                 days = 7,
                 include = Include.Events(
-                    labels = true,
+                    label = true,
                     creator = true,
                     attendees = true
                 )
