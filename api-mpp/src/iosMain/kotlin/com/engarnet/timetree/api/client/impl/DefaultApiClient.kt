@@ -48,7 +48,7 @@ actual class DefaultApiClient actual constructor(private val accessToken: String
         path: String,
         headers: Map<String, String>,
         body: String
-    ): String = withContext(Dispatchers.Default)  {
+    ): String = withContext(Dispatchers.Default) {
         val request = NSMutableURLRequest(uRL = NSURL(string = path))
         request.HTTPMethod = "PUT"
 
@@ -62,7 +62,7 @@ actual class DefaultApiClient actual constructor(private val accessToken: String
     actual override suspend fun delete(
         path: String,
         headers: Map<String, String>
-    ): String = withContext(Dispatchers.Default)  {
+    ): String = withContext(Dispatchers.Default) {
         val request = NSMutableURLRequest(uRL = NSURL(string = path))
         request.HTTPMethod = "DELETE"
 
@@ -83,7 +83,9 @@ actual class DefaultApiClient actual constructor(private val accessToken: String
         }
 
         body?.let {
-            request.setHTTPBody(NSString.create(string = it).dataUsingEncoding(encoding = NSUTF8StringEncoding))
+            request.setHTTPBody(
+                NSString.create(string = it).dataUsingEncoding(encoding = NSUTF8StringEncoding)
+            )
         }
 
         val delegate = Delegate()

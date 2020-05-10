@@ -9,7 +9,8 @@ import kotlinx.serialization.json.Json
 
 open class EventsApi(private val apiClient: ApiClient) {
     suspend fun event(params: EventParams): EventResponse {
-        val path = Config.V1.apiUrl + "/calendars/" + params.calendarId + "/events/" + params.eventId
+        val path =
+            Config.V1.apiUrl + "/calendars/" + params.calendarId + "/events/" + params.eventId
         val response = apiClient.get(
             path = path,
             headers = Config.V1.headers,
@@ -55,7 +56,8 @@ open class EventsApi(private val apiClient: ApiClient) {
     }
 
     suspend fun deleteEvent(params: DeleteEventsParams) {
-        val path = Config.V1.apiUrl + "/calendars/" + params.calendarId + "/events/" + params.eventId
+        val path =
+            Config.V1.apiUrl + "/calendars/" + params.calendarId + "/events/" + params.eventId
         val response = apiClient.delete(
             path = path,
             headers = Config.V1.headers

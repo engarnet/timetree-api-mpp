@@ -16,6 +16,6 @@ internal fun TokenResponse.toModel(): TAccessToken {
         accessToken = response.accessToken,
         tokenType = response.tokenType,
         scope = response.scope,
-        createdAt =  Date().apply { time = response.createdAt.toLong() }
+        createdAt = Date().apply { time = response.createdAt.toLong() }
     )
 }

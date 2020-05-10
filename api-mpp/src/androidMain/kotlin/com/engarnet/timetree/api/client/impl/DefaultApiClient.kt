@@ -13,7 +13,11 @@ actual class DefaultApiClient actual constructor(private val accessToken: String
             return if (accessToken.isEmpty()) mapOf() else mapOf("Authorization" to "Bearer $accessToken")
         }
 
-    actual override suspend fun get(path: String, headers: Map<String, String>, params: Map<String, Any>): String =
+    actual override suspend fun get(
+        path: String,
+        headers: Map<String, String>,
+        params: Map<String, Any>
+    ): String =
         withContext(Dispatchers.IO) {
             val queryParams = params.map { "${it.key}=${it.value}" }.joinToString("&")
             val url = URL("$path?$queryParams")
@@ -22,7 +26,11 @@ actual class DefaultApiClient actual constructor(private val accessToken: String
             connect(connection, headers)
         }
 
-    actual override suspend fun post(path: String, headers: Map<String, String>, body: String): String =
+    actual override suspend fun post(
+        path: String,
+        headers: Map<String, String>,
+        body: String
+    ): String =
         withContext(Dispatchers.IO) {
             val url = URL(path)
             val connection = url.openConnection() as HttpsURLConnection
@@ -31,7 +39,11 @@ actual class DefaultApiClient actual constructor(private val accessToken: String
             connect(connection, headers, body)
         }
 
-    actual override suspend fun put(path: String, headers: Map<String, String>, body: String): String =
+    actual override suspend fun put(
+        path: String,
+        headers: Map<String, String>,
+        body: String
+    ): String =
         withContext(Dispatchers.IO) {
             val url = URL(path)
             val connection = url.openConnection() as HttpsURLConnection
@@ -68,7 +80,10 @@ actual class DefaultApiClient actual constructor(private val accessToken: String
                     PrintStream(connection.outputStream).print(it)
                 }
 
-                handleError(responseCode = connection.responseCode, body = connection.errorStream?.toJson())
+                handleError(
+                    responseCode = connection.responseCode,
+                    body = connection.errorStream?.toJson()
+                )
 
                 json = BufferedInputStream(connection.inputStream).toJson()
             } finally {
