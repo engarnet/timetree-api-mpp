@@ -1,4 +1,4 @@
-package com.engarnet.timetree.api.client.impl
+package com.engarnet.timetree.platform.api.client
 
 import com.engarnet.timetree.api.client.ApiClient
 

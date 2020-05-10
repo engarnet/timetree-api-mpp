@@ -10,7 +10,7 @@ import android.webkit.*
 import androidx.appcompat.app.AppCompatActivity
 import com.engarnet.timetree.R
 import com.engarnet.timetree.api.client.ApiClient
-import com.engarnet.timetree.api.client.impl.DefaultApiClient
+import com.engarnet.timetree.platform.api.client.DefaultApiClient
 import com.engarnet.timetree.api.config.Config
 import com.engarnet.timetree.api.v1.api.authorization.AuthorizationApi
 import com.engarnet.timetree.model.TAccessToken

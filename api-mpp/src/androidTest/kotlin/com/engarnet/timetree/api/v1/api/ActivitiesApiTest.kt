@@ -1,7 +1,7 @@
 package com.engarnet.timetree.api.v1.api
 
 import com.engarnet.timetree.api.client.ApiClient
-import com.engarnet.timetree.api.client.impl.DefaultApiClient
+import com.engarnet.timetree.platform.api.client.DefaultApiClient
 import com.engarnet.timetree.api.v1.api.activities.ActivitiesApi
 import com.engarnet.timetree.api.v1.api.activities.params.AddActivityParams
 import kotlinx.coroutines.runBlocking
@@ -17,7 +17,9 @@ class ActivitiesApiTest {
 
     @Before
     fun setup() {
-        apiClient = DefaultApiClient(accessToken)
+        apiClient = DefaultApiClient(
+            accessToken
+        )
     }
 
     @Test

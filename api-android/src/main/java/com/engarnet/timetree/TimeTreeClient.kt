@@ -2,7 +2,7 @@ package com.engarnet.timetree
 
 import android.net.Uri
 import com.engarnet.timetree.api.client.ApiClient
-import com.engarnet.timetree.api.client.impl.DefaultApiClient
+import com.engarnet.timetree.platform.api.client.DefaultApiClient
 import com.engarnet.timetree.api.v1.api.activities.ActivitiesApi
 import com.engarnet.timetree.api.v1.api.activities.params.AddActivityParams
 import com.engarnet.timetree.api.v1.api.calendars.CalendarApi
@@ -21,7 +21,8 @@ import java.util.*
 class TimeTreeClient(
     accessToken: String
 ) {
-    private val apiClient: ApiClient = DefaultApiClient(accessToken)
+    private val apiClient: ApiClient =
+        DefaultApiClient(accessToken)
     private val userApi: UserApi = UserApi(apiClient)
     private val calendarApi: CalendarApi = CalendarApi(apiClient)
     private val eventsApi: EventsApi = EventsApi(apiClient)

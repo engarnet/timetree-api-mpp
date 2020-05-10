@@ -1,7 +1,7 @@
 package com.engarnet.timetree.api.v1.api
 
 import com.engarnet.timetree.api.client.ApiClient
-import com.engarnet.timetree.api.client.impl.DefaultApiClient
+import com.engarnet.timetree.platform.api.client.DefaultApiClient
 import com.engarnet.timetree.api.v1.api.calendars.CalendarApi
 import com.engarnet.timetree.api.v1.api.calendars.params.CalendarLabelsParams
 import com.engarnet.timetree.api.v1.api.calendars.params.CalendarMembersParams
@@ -20,7 +20,9 @@ class CalendarApiTest {
 
     @Before
     fun setup() {
-        apiClient = DefaultApiClient(accessToken)
+        apiClient = DefaultApiClient(
+            accessToken
+        )
     }
 
     @Test
