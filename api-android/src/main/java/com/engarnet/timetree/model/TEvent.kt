@@ -98,35 +98,35 @@ internal fun UpcomingEventsResponse.toModel(): List<TEvent> {
             location = entity.attributes.location,
             url = entity.attributes.url?.let { Uri.parse(it) },
             creator = entity.relationships.creator.data.id.let { id ->
-                included.firstOrNull { it.id == id }?.let {
+                included.first { it.id == id }.let {
                     TUser(
                         id = it.id,
                         name = it.attributes.name,
                         description = it.attributes.description,
                         imageUrl = it.attributes.imageUrl?.let { Uri.parse(it) }
                     )
-                } ?: TUser(id, "workaround name", "", imageUrl = null) // TODO: includedにmembersが返って来ない場合の回避策
+                }
             },
             label = entity.relationships.label.data.id.let { id ->
-                included.firstOrNull { it.id == id }?.let {
+                included.first { it.id == id }.let {
                     TLabel(
                         id = it.id,
                         name = it.attributes.name,
                         color = it.attributes.color!!
                     )
-                } ?: TLabel(id, "workaround name", 0) // TODO: includedにlabelsが返って来ないので回避策
+                }
             },
             attendees = entity.relationships.attendees.data.map { entity ->
                 entity.id
             }.map { attendeesId ->
-                included.firstOrNull { it.id == attendeesId }?.let {
+                included.first { it.id == attendeesId }.let {
                     TUser(
                         id = it.id,
                         name = it.attributes.name,
                         description = it.attributes.description,
                         imageUrl = it.attributes.imageUrl?.let { Uri.parse(it) }
                     )
-                } ?: TUser(attendeesId, "workaround name", "", imageUrl = null) // TODO: includedにmembersが返って来ない場合の回避策
+                }
             },
             createdAt = Date().apply { time = entity.attributes.createdAt.time },
             updatedAt = Date().apply { time = entity.attributes.updatedAt.time }
