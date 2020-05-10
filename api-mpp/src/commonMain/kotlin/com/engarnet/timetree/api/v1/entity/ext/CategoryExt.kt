@@ -1,6 +1,6 @@
 package com.engarnet.timetree.api.v1.entity.ext
 
-import com.engarnet.timetree.model.type.Category
+import com.engarnet.timetree.type.Category
 
 fun Category.toParam(): String {
     return when (this) {

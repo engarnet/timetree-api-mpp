@@ -4,8 +4,8 @@ import com.engarnet.timetree.api.client.ApiClient
 import com.engarnet.timetree.api.client.impl.DefaultApiClient
 import com.engarnet.timetree.api.v1.api.events.EventsApi
 import com.engarnet.timetree.api.v1.api.events.params.*
-import com.engarnet.timetree.model.type.Date
-import com.engarnet.timetree.model.type.Include
+import com.engarnet.timetree.type.Date
+import com.engarnet.timetree.type.Include
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test

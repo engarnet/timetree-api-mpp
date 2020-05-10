@@ -1,8 +1,8 @@
 package com.engarnet.timetree.api.v1.api.events.params
 
 import com.engarnet.timetree.api.v1.entity.ext.toParam
-import com.engarnet.timetree.model.type.Include
-import com.engarnet.timetree.model.type.TimeZone
+import com.engarnet.timetree.type.Include
+import com.engarnet.timetree.type.TimeZone
 
 data class UpcomingEventsParams(
     val calendarId: String,

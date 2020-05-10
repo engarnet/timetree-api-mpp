@@ -1,6 +1,6 @@
 package com.engarnet.timetree.api.v1.serializer
 
-import com.engarnet.timetree.model.type.Date
+import com.engarnet.timetree.type.Date
 import com.soywiz.klock.DateException
 import com.soywiz.klock.DateFormat
 import com.soywiz.klock.parse

@@ -1,4 +1,4 @@
-package com.engarnet.timetree.model.type
+package com.engarnet.timetree.type
 
 sealed class Include {
     data class Calendars(val labels: Boolean, val members: Boolean)

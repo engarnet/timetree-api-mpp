@@ -3,7 +3,7 @@ package com.engarnet.timetree.model
 import android.net.Uri
 import com.engarnet.timetree.api.v1.api.events.response.EventResponse
 import com.engarnet.timetree.api.v1.api.events.response.UpcomingEventsResponse
-import com.engarnet.timetree.model.type.Category
+import com.engarnet.timetree.type.Category
 import java.util.*
 
 data class TEvent(

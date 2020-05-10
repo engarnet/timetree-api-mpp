@@ -15,7 +15,7 @@ import com.engarnet.timetree.api.v1.api.events.params.*
 import com.engarnet.timetree.api.v1.api.user.UserApi
 import com.engarnet.timetree.exception.*
 import com.engarnet.timetree.model.*
-import com.engarnet.timetree.model.type.Include
+import com.engarnet.timetree.type.Include
 import java.util.*
 
 class TimeTreeClient(
@@ -129,11 +129,11 @@ class TimeTreeClient(
                 title = title,
                 allDay = allDay,
                 startAt = startAt.let {
-                    com.engarnet.timetree.model.type.Date().apply { time = it.time }
+                    com.engarnet.timetree.type.Date().apply { time = it.time }
                 },
                 startTimeZone = timeZone?.id,
                 endAt = endAt.let {
-                    com.engarnet.timetree.model.type.Date().apply { time = it.time }
+                    com.engarnet.timetree.type.Date().apply { time = it.time }
                 },
                 endTimeZone = timeZone?.id,
                 description = description,
@@ -198,11 +198,11 @@ class TimeTreeClient(
                     title = title,
                     allDay = allDay,
                     startAt = startAt.let {
-                        com.engarnet.timetree.model.type.Date().apply { time = it.time }
+                        com.engarnet.timetree.type.Date().apply { time = it.time }
                     },
                     startTimeZone = timeZone?.id,
                     endAt = endAt.let {
-                        com.engarnet.timetree.model.type.Date().apply { time = it.time }
+                        com.engarnet.timetree.type.Date().apply { time = it.time }
                     },
                     endTimeZone = timeZone?.id,
                     description = description,

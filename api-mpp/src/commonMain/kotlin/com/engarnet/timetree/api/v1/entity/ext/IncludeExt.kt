@@ -1,6 +1,6 @@
 package com.engarnet.timetree.api.v1.entity.ext
 
-import com.engarnet.timetree.model.type.Include
+import com.engarnet.timetree.type.Include
 
 fun Include.Calendars.toParam(): String {
     return listOf(
