@@ -206,7 +206,9 @@ extension TimeTreeClient {
                 completion(.failure(error.convertDetail()))
             } else {
                 let response = deferred.getCompleted() as! EventResponse
-                completion(.success(response.toModel()))
+                self.event(calendarId: calendarId, eventId: response.data.id) {
+                    completion($0)
+                }
             }
         }
     }
@@ -243,7 +245,9 @@ extension TimeTreeClient {
                 completion(.failure(error.convertDetail()))
             } else {
                 let response = deferred.getCompleted() as! EventResponse
-                completion(.success(response.toModel()))
+                self.event(calendarId: calendarId, eventId: response.data.id) {
+                    completion($0)
+                }
             }
         }
     }
@@ -288,7 +292,9 @@ extension TimeTreeClient {
                 completion(.failure(error.convertDetail()))
             } else {
                 let response = deferred.getCompleted() as! EventResponse
-                completion(.success(response.toModel()))
+                self.event(calendarId: calendarId, eventId: response.data.id) {
+                    completion($0)
+                }
             }
         }
     }
@@ -329,7 +335,9 @@ extension TimeTreeClient {
                 completion(.failure(error.convertDetail()))
             } else {
                 let response = deferred.getCompleted() as! EventResponse
-                completion(.success(response.toModel()))
+                self.event(calendarId: calendarId, eventId: response.data.id) {
+                    completion($0)
+                }
             }
         }
     }

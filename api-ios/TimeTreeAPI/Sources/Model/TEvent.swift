@@ -95,7 +95,7 @@ extension EventResponse {
                     description: $0.attributes.component3(),
                     imageUrl: URL(string: $0.attributes.imageUrl ?? "")
                 )
-                } ?? TUser(id: entity.relationships.creator.data.id, name: "workaround name", description: "", imageUrl: nil), // TODO: includedにmembersが返って来ない場合の回避策
+            }!,
             label: included.first{
                 $0.id == entity.relationships.label.data.id
             }.map {
@@ -104,7 +104,7 @@ extension EventResponse {
                     name: $0.attributes.name,
                     color: UIColor(rgb: $0.attributes.color as! Int)
                 )
-                } ?? TLabel(id: entity.relationships.label.data.id, name: "workaround name", color: UIColor.white), // TODO: includedにmembersが返って来ない場合の回避策
+            }!,
             attendees: entity.relationships.attendees.data.map{ data in
                 data.id
             }.map { attendeesId in
@@ -116,7 +116,7 @@ extension EventResponse {
                         description: $0.attributes.component3(),
                         imageUrl: URL(string: $0.attributes.imageUrl ?? "")
                     )
-                    } ?? TUser(id: attendeesId, name: "workaround name", description: "", imageUrl: nil) // TODO: includedにmembersが返って来ない場合の回避策
+                }!
             },
             createdAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.createdAt.time / 1000)),
             updatedAt: Foundation.Date(timeIntervalSince1970: TimeInterval(entity.attributes.updatedAt.time / 1000))

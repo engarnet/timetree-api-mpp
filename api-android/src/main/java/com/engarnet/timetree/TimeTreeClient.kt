@@ -123,7 +123,7 @@ class TimeTreeClient(
         label: TLabel,
         attendees: List<TUser>?
     ): TEvent = call {
-        eventsApi.addEvent(
+        val response = eventsApi.addEvent(
             AddEventsParams.AddScheduleParams(
                 calendarId = calendarId,
                 title = title,
@@ -142,7 +142,11 @@ class TimeTreeClient(
                 labelId = label.id,
                 attendees = attendees?.map { it.id }
             )
-        ).toModel()
+        )
+        event(
+            calendarId = calendarId,
+            eventId = response.data.id
+        )
     }
 
     suspend fun addKeep(
@@ -154,7 +158,7 @@ class TimeTreeClient(
         label: TLabel,
         attendees: List<TUser>?
     ): TEvent = call {
-        eventsApi.addEvent(
+        val response = eventsApi.addEvent(
             AddEventsParams.AddKeepParams(
                 calendarId = calendarId,
                 title = title,
@@ -165,7 +169,11 @@ class TimeTreeClient(
                 labelId = label.id,
                 attendees = attendees?.map { it.id }
             )
-        ).toModel()
+        )
+        event(
+            calendarId = calendarId,
+            eventId = response.data.id
+        )
     }
 
     suspend fun updateSchedule(
@@ -182,7 +190,7 @@ class TimeTreeClient(
         label: TLabel,
         attendees: List<TUser>?
     ): TEvent = call {
-        eventsApi.updateEvent(
+        val response = eventsApi.updateEvent(
             UpdateEventParams(
                 eventId = eventId,
                 addEventsParams = AddEventsParams.AddScheduleParams(
@@ -204,7 +212,11 @@ class TimeTreeClient(
                     attendees = attendees?.map { it.id }
                 )
             )
-        ).toModel()
+        )
+        event(
+            calendarId = calendarId,
+            eventId = response.data.id
+        )
     }
 
     suspend fun updateKeep(
@@ -217,7 +229,7 @@ class TimeTreeClient(
         label: TLabel,
         attendees: List<TUser>?
     ): TEvent = call {
-        eventsApi.updateEvent(
+        val response = eventsApi.updateEvent(
             UpdateEventParams(
                 eventId = eventId,
                 addEventsParams = AddEventsParams.AddKeepParams(
@@ -231,7 +243,11 @@ class TimeTreeClient(
                     attendees = attendees?.map { it.id }
                 )
             )
-        ).toModel()
+        )
+        event(
+            calendarId = calendarId,
+            eventId = response.data.id
+        )
     }
 
     suspend fun deleteEvent(calendarId: String, eventId: String) = call {
