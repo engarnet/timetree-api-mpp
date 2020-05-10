@@ -4,8 +4,8 @@ import com.engarnet.timetree.api.client.ApiClient
 import com.engarnet.timetree.api.client.impl.DefaultApiClient
 import com.engarnet.timetree.api.v1.api.events.EventsApi
 import com.engarnet.timetree.api.v1.api.events.params.*
-import com.engarnet.timetree.model.type.Date
-import com.engarnet.timetree.model.type.Include
+import com.engarnet.timetree.type.Date
+import com.engarnet.timetree.type.Include
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -28,16 +28,16 @@ class EventApiTest {
         runBlocking {
             val api = EventsApi(apiClient)
 
-            EventsParams(
+            EventParams(
                 calendarId = calendarId,
                 eventId = eventId,
                 include = Include.Events(
-                    labels = true,
+                    label = true,
                     creator = true,
                     attendees = true
                 )
             ).runCatching {
-                api.events(this)
+                api.event(this)
             }.onSuccess {
                 print("result: $it")
             }.onFailure {
@@ -57,7 +57,7 @@ class EventApiTest {
                 timeZone = TimeZone.getDefault().id,
                 days = 7,
                 include = Include.Events(
-                    labels = true,
+                    label = true,
                     creator = true,
                     attendees = true
                 )

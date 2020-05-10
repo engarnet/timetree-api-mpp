@@ -1,6 +1,6 @@
 package com.engarnet.timetree.api.v1.serializer
 
-import com.engarnet.timetree.model.type.Uri
+import com.engarnet.timetree.type.Uri
 import kotlinx.serialization.*
 
 @Serializer(forClass = Uri::class)

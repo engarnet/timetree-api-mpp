@@ -66,7 +66,7 @@ class EventListViewController: UITableViewController {
             return UITableViewCell()
         }
         let event = events[indexPath.row]
-        cell.colorView.backgroundColor = UIColor.gray
+        cell.colorView.backgroundColor = event.label.color
         cell.nameLabel.text = event.title
         cell.descriptionLabel.text = event.description
         cell.timeLabel.text = event.startAt.displayFormat + " - " + event.endAt.displayFormat

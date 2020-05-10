@@ -54,7 +54,7 @@ class EventEditActivity : AppCompatActivity() {
         eventId?.also { eventId ->
             runBlocking {
                 runCatching {
-                    Container.timeTreeClient.events(
+                    Container.timeTreeClient.event(
                         calendarId = calendarId,
                         eventId = eventId
                     )

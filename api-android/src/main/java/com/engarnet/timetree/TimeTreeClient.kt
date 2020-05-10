@@ -15,7 +15,7 @@ import com.engarnet.timetree.api.v1.api.events.params.*
 import com.engarnet.timetree.api.v1.api.user.UserApi
 import com.engarnet.timetree.exception.*
 import com.engarnet.timetree.model.*
-import com.engarnet.timetree.model.type.Include
+import com.engarnet.timetree.type.Include
 import java.util.*
 
 class TimeTreeClient(
@@ -89,12 +89,12 @@ class TimeTreeClient(
         ).toModel()
     }
 
-    suspend fun events(calendarId: String, eventId: String): TEvent = call {
-        eventsApi.events(
-            EventsParams(
+    suspend fun event(calendarId: String, eventId: String): TEvent = call {
+        eventsApi.event(
+            EventParams(
                 calendarId = calendarId,
                 eventId = eventId,
-                include = Include.Events(labels = true, creator = true, attendees = true)
+                include = Include.Events(label = true, creator = true, attendees = true)
             )
         ).toModel()
     }
@@ -104,7 +104,7 @@ class TimeTreeClient(
             UpcomingEventsParams(
                 calendarId = calendarId,
                 days = 7,
-                include = Include.Events(labels = true, creator = true, attendees = true),
+                include = Include.Events(label = true, creator = true, attendees = true),
                 timeZone = timezone.id
             )
         ).toModel()
@@ -123,17 +123,17 @@ class TimeTreeClient(
         label: TLabel,
         attendees: List<TUser>?
     ): TEvent = call {
-        eventsApi.addEvent(
+        val response = eventsApi.addEvent(
             AddEventsParams.AddScheduleParams(
                 calendarId = calendarId,
                 title = title,
                 allDay = allDay,
                 startAt = startAt.let {
-                    com.engarnet.timetree.model.type.Date().apply { time = it.time }
+                    com.engarnet.timetree.type.Date().apply { time = it.time }
                 },
                 startTimeZone = timeZone?.id,
                 endAt = endAt.let {
-                    com.engarnet.timetree.model.type.Date().apply { time = it.time }
+                    com.engarnet.timetree.type.Date().apply { time = it.time }
                 },
                 endTimeZone = timeZone?.id,
                 description = description,
@@ -142,7 +142,11 @@ class TimeTreeClient(
                 labelId = label.id,
                 attendees = attendees?.map { it.id }
             )
-        ).toModel()
+        )
+        event(
+            calendarId = calendarId,
+            eventId = response.data.id
+        )
     }
 
     suspend fun addKeep(
@@ -154,7 +158,7 @@ class TimeTreeClient(
         label: TLabel,
         attendees: List<TUser>?
     ): TEvent = call {
-        eventsApi.addEvent(
+        val response = eventsApi.addEvent(
             AddEventsParams.AddKeepParams(
                 calendarId = calendarId,
                 title = title,
@@ -165,7 +169,11 @@ class TimeTreeClient(
                 labelId = label.id,
                 attendees = attendees?.map { it.id }
             )
-        ).toModel()
+        )
+        event(
+            calendarId = calendarId,
+            eventId = response.data.id
+        )
     }
 
     suspend fun updateSchedule(
@@ -182,7 +190,7 @@ class TimeTreeClient(
         label: TLabel,
         attendees: List<TUser>?
     ): TEvent = call {
-        eventsApi.updateEvent(
+        val response = eventsApi.updateEvent(
             UpdateEventParams(
                 eventId = eventId,
                 addEventsParams = AddEventsParams.AddScheduleParams(
@@ -190,11 +198,11 @@ class TimeTreeClient(
                     title = title,
                     allDay = allDay,
                     startAt = startAt.let {
-                        com.engarnet.timetree.model.type.Date().apply { time = it.time }
+                        com.engarnet.timetree.type.Date().apply { time = it.time }
                     },
                     startTimeZone = timeZone?.id,
                     endAt = endAt.let {
-                        com.engarnet.timetree.model.type.Date().apply { time = it.time }
+                        com.engarnet.timetree.type.Date().apply { time = it.time }
                     },
                     endTimeZone = timeZone?.id,
                     description = description,
@@ -204,7 +212,11 @@ class TimeTreeClient(
                     attendees = attendees?.map { it.id }
                 )
             )
-        ).toModel()
+        )
+        event(
+            calendarId = calendarId,
+            eventId = response.data.id
+        )
     }
 
     suspend fun updateKeep(
@@ -217,7 +229,7 @@ class TimeTreeClient(
         label: TLabel,
         attendees: List<TUser>?
     ): TEvent = call {
-        eventsApi.updateEvent(
+        val response = eventsApi.updateEvent(
             UpdateEventParams(
                 eventId = eventId,
                 addEventsParams = AddEventsParams.AddKeepParams(
@@ -231,7 +243,11 @@ class TimeTreeClient(
                     attendees = attendees?.map { it.id }
                 )
             )
-        ).toModel()
+        )
+        event(
+            calendarId = calendarId,
+            eventId = response.data.id
+        )
     }
 
     suspend fun deleteEvent(calendarId: String, eventId: String) = call {

@@ -131,13 +131,13 @@ extension TimeTreeClient {
 
 extension TimeTreeClient {
     // EventAPI
-    public func events(calendarId: String, eventId: String, completion: @escaping (Result<TEvent, TimeTreeError>) -> ()) {
+    public func event(calendarId: String, eventId: String, completion: @escaping (Result<TEvent, TimeTreeError>) -> ()) {
         let deferred = EventsApi(apiClient: apiClient)
-            .events(
-                params: EventsParams(
+            .event(
+                params: EventParams(
                     calendarId: calendarId,
                     eventId: eventId,
-                    include: Include.Events(labels: true, creator: true, attendees: true)
+                    include: Include.Events(label: true, creator: true, attendees: true)
                 )
             )
         deferred.invokeOnCompletion { error in
@@ -157,7 +157,7 @@ extension TimeTreeClient {
                     calendarId: calendarId,
                     timeZone: timeZone.identifier,
                     days: 7,
-                    include: Include.Events(labels: true, creator: true, attendees: true)
+                    include: Include.Events(label: true, creator: true, attendees: true)
                 )
             )
         deferred.invokeOnCompletion { error in
@@ -206,7 +206,9 @@ extension TimeTreeClient {
                 completion(.failure(error.convertDetail()))
             } else {
                 let response = deferred.getCompleted() as! EventResponse
-                completion(.success(response.toModel()))
+                self.event(calendarId: calendarId, eventId: response.data.id) {
+                    completion($0)
+                }
             }
         }
     }
@@ -243,7 +245,9 @@ extension TimeTreeClient {
                 completion(.failure(error.convertDetail()))
             } else {
                 let response = deferred.getCompleted() as! EventResponse
-                completion(.success(response.toModel()))
+                self.event(calendarId: calendarId, eventId: response.data.id) {
+                    completion($0)
+                }
             }
         }
     }
@@ -288,7 +292,9 @@ extension TimeTreeClient {
                 completion(.failure(error.convertDetail()))
             } else {
                 let response = deferred.getCompleted() as! EventResponse
-                completion(.success(response.toModel()))
+                self.event(calendarId: calendarId, eventId: response.data.id) {
+                    completion($0)
+                }
             }
         }
     }
@@ -329,7 +335,9 @@ extension TimeTreeClient {
                 completion(.failure(error.convertDetail()))
             } else {
                 let response = deferred.getCompleted() as! EventResponse
-                completion(.success(response.toModel()))
+                self.event(calendarId: calendarId, eventId: response.data.id) {
+                    completion($0)
+                }
             }
         }
     }

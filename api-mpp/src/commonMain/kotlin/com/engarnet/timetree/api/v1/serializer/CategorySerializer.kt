@@ -2,7 +2,7 @@ package com.engarnet.timetree.api.v1.serializer
 
 import com.engarnet.timetree.api.v1.entity.ext.toCategory
 import com.engarnet.timetree.api.v1.entity.ext.toParam
-import com.engarnet.timetree.model.type.Category
+import com.engarnet.timetree.type.Category
 import kotlinx.serialization.*
 
 @Serializer(forClass = Category::class)

@@ -39,7 +39,7 @@ class EventDetailActivity : AppCompatActivity() {
 
         runBlocking {
             runCatching {
-                Container.timeTreeClient.events(
+                Container.timeTreeClient.event(
                     calendarId = calendarId,
                     eventId = eventId
                 )

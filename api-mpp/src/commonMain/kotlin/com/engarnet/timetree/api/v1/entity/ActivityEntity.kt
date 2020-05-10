@@ -1,7 +1,7 @@
 package com.engarnet.timetree.api.v1.entity
 
 import com.engarnet.timetree.api.v1.serializer.DateSerializer
-import com.engarnet.timetree.model.type.Date
+import com.engarnet.timetree.type.Date
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

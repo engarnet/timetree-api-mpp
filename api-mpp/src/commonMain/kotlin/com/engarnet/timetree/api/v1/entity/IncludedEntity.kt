@@ -2,7 +2,7 @@ package com.engarnet.timetree.api.v1.entity
 
 import com.engarnet.timetree.api.v1.serializer.ColorSerializer
 import com.engarnet.timetree.api.v1.serializer.UriSerializer
-import com.engarnet.timetree.model.type.Uri
+import com.engarnet.timetree.type.Uri
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

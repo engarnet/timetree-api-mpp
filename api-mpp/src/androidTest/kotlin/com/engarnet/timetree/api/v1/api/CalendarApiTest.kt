@@ -7,7 +7,7 @@ import com.engarnet.timetree.api.v1.api.calendars.params.CalendarLabelsParams
 import com.engarnet.timetree.api.v1.api.calendars.params.CalendarMembersParams
 import com.engarnet.timetree.api.v1.api.calendars.params.CalendarParams
 import com.engarnet.timetree.api.v1.api.calendars.params.CalendarsParams
-import com.engarnet.timetree.model.type.Include
+import com.engarnet.timetree.type.Include
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test

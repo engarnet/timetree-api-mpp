@@ -1,6 +1,6 @@
 package com.engarnet.timetree.api.v1.serializer
 
-import com.engarnet.timetree.model.type.TimeZone
+import com.engarnet.timetree.type.TimeZone
 import kotlinx.serialization.*
 
 @Serializer(forClass = TimeZone::class)

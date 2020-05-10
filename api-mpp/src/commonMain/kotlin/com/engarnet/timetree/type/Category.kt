@@ -1,4 +1,4 @@
-package com.engarnet.timetree.model.type
+package com.engarnet.timetree.type
 
 enum class Category {
     Schedule,
