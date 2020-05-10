@@ -7,7 +7,7 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 
-fun EventsApi.events(params: EventsParams): Deferred<EventResponse> {
+fun EventsApi.events(params: EventParams): Deferred<EventResponse> {
     return GlobalScope.async {
         events(params)
     }

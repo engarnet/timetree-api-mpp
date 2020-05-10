@@ -91,7 +91,7 @@ class TimeTreeClient(
 
     suspend fun events(calendarId: String, eventId: String): TEvent = call {
         eventsApi.events(
-            EventsParams(
+            EventParams(
                 calendarId = calendarId,
                 eventId = eventId,
                 include = Include.Events(labels = true, creator = true, attendees = true)

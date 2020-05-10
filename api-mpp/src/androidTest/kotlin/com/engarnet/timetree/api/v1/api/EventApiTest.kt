@@ -28,7 +28,7 @@ class EventApiTest {
         runBlocking {
             val api = EventsApi(apiClient)
 
-            EventsParams(
+            EventParams(
                 calendarId = calendarId,
                 eventId = eventId,
                 include = Include.Events(
