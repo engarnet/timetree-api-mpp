@@ -89,8 +89,8 @@ class TimeTreeClient(
         ).toModel()
     }
 
-    suspend fun events(calendarId: String, eventId: String): TEvent = call {
-        eventsApi.events(
+    suspend fun event(calendarId: String, eventId: String): TEvent = call {
+        eventsApi.event(
             EventParams(
                 calendarId = calendarId,
                 eventId = eventId,

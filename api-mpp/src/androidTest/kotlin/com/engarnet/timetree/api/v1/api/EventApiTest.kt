@@ -37,7 +37,7 @@ class EventApiTest {
                     attendees = true
                 )
             ).runCatching {
-                api.events(this)
+                api.event(this)
             }.onSuccess {
                 print("result: $it")
             }.onFailure {

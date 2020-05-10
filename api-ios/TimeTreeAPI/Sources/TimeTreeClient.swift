@@ -131,10 +131,10 @@ extension TimeTreeClient {
 
 extension TimeTreeClient {
     // EventAPI
-    public func events(calendarId: String, eventId: String, completion: @escaping (Result<TEvent, TimeTreeError>) -> ()) {
+    public func event(calendarId: String, eventId: String, completion: @escaping (Result<TEvent, TimeTreeError>) -> ()) {
         let deferred = EventsApi(apiClient: apiClient)
-            .events(
-                params: EventsParams(
+            .event(
+                params: EventParams(
                     calendarId: calendarId,
                     eventId: eventId,
                     include: Include.Events(labels: true, creator: true, attendees: true)

@@ -8,7 +8,7 @@ import com.engarnet.timetree.api.v1.api.events.response.UpcomingEventsResponse
 import kotlinx.serialization.json.Json
 
 open class EventsApi(private val apiClient: ApiClient) {
-    suspend fun events(params: EventParams): EventResponse {
+    suspend fun event(params: EventParams): EventResponse {
         val path = Config.V1.apiUrl + "/calendars/" + params.calendarId + "/events/" + params.eventId
         val response = apiClient.get(
             path = path,
