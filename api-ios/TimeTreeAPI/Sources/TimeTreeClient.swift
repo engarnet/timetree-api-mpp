@@ -363,7 +363,7 @@ extension TimeTreeClient {
 extension TimeTreeClient {
     // ActivityApi
     public func addComment(calendarId: String, eventId: String, comment: String, completion: @escaping (Result<TComment, TimeTreeError>) -> ()) {
-        let deferred = ActivitiesApi(apiClient: apiClient)
+        let deferred = ActivityApi(apiClient: apiClient)
             .addActivity(
                 params: AddActivityParams(
                     calendarId: calendarId,

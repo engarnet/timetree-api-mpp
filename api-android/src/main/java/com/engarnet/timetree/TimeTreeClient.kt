@@ -3,8 +3,8 @@ package com.engarnet.timetree
 import android.net.Uri
 import com.engarnet.timetree.api.client.ApiClient
 import com.engarnet.timetree.platform.api.client.DefaultApiClient
-import com.engarnet.timetree.api.v1.api.activities.ActivitiesApi
-import com.engarnet.timetree.api.v1.api.activities.params.AddActivityParams
+import com.engarnet.timetree.api.v1.api.activity.ActivityApi
+import com.engarnet.timetree.api.v1.api.activity.params.AddActivityParams
 import com.engarnet.timetree.api.v1.api.calendars.CalendarApi
 import com.engarnet.timetree.api.v1.api.calendars.params.CalendarLabelsParams
 import com.engarnet.timetree.api.v1.api.calendars.params.CalendarMembersParams
@@ -26,7 +26,8 @@ class TimeTreeClient(
     private val userApi: UserApi = UserApi(apiClient)
     private val calendarApi: CalendarApi = CalendarApi(apiClient)
     private val eventsApi: EventsApi = EventsApi(apiClient)
-    private val activitiesApi: ActivitiesApi = ActivitiesApi(apiClient)
+    private val activitiesApi: ActivityApi =
+        ActivityApi(apiClient)
 
     private fun HttpRequestException.convertDetail() {
         val error = error.toModel(responseCode)

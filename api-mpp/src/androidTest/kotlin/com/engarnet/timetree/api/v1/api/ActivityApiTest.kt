@@ -2,13 +2,13 @@ package com.engarnet.timetree.api.v1.api
 
 import com.engarnet.timetree.api.client.ApiClient
 import com.engarnet.timetree.platform.api.client.DefaultApiClient
-import com.engarnet.timetree.api.v1.api.activities.ActivitiesApi
-import com.engarnet.timetree.api.v1.api.activities.params.AddActivityParams
+import com.engarnet.timetree.api.v1.api.activity.ActivityApi
+import com.engarnet.timetree.api.v1.api.activity.params.AddActivityParams
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class ActivitiesApiTest {
+class ActivityApiTest {
     private lateinit var apiClient: ApiClient
 
     private val accessToken = ""
@@ -25,7 +25,8 @@ class ActivitiesApiTest {
     @Test
     fun test_calendars() {
         runBlocking {
-            val api = ActivitiesApi(apiClient)
+            val api =
+                ActivityApi(apiClient)
 
             AddActivityParams(
                 calendarId = calendarId,

@@ -1,4 +1,4 @@
-package com.engarnet.timetree.api.v1.api.activities.params
+package com.engarnet.timetree.api.v1.api.activity.params
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -9,13 +9,14 @@ data class AddActivityParams(
     val content: String
 ) {
     fun toJson(): String {
-        val param = Params(
-            data = Params.ActivityItem(
-                attributes = Params.ActivityItem.Attributes(
-                    content = content
+        val param =
+            Params(
+                data = Params.ActivityItem(
+                    attributes = Params.ActivityItem.Attributes(
+                        content = content
+                    )
                 )
             )
-        )
 
         return Json.stringify(Params.serializer(), param)
     }

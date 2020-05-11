@@ -1,6 +1,6 @@
 package com.engarnet.timetree.model
 
-import com.engarnet.timetree.api.v1.api.activities.response.ActivityResponse
+import com.engarnet.timetree.api.v1.api.activity.response.ActivityResponse
 import java.util.*
 
 data class TComment(
