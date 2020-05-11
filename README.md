@@ -6,11 +6,15 @@ this is an TimeTree API wrapper library and demo app, written in kotlin mpp
 
 ## Support Platform
 
-Android and iOS only.
+Android, iOS
 
 ## Description
 
 official api document is [here](https://developers.timetreeapp.com/en/docs/api)
+
+## Project Structure
+
+<img src="https://user-images.githubusercontent.com/46784189/81533126-9742a880-93a0-11ea-881f-67df6b40bdde.png" width="70%">
 
 ## how to use demo apps
 
